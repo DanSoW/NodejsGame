@@ -1,29 +1,29 @@
 
-var express = require('express'); //подключение модуля express
-var app = express();              //создание экземлпяра приложения express
-var serv = require('http').Server(app); //добавление в качестве http сервера express app
+var express = require('express'); //connecting the express module
+var app = express();              //creating an express application instance
+var serv = require('http').Server(app); //adding an express app as an http server
 
-app.get('/', function (req, res) { //обработка get запроса
-    res.sendFile(__dirname + '/client/index.html'); //выдача файл на get запрос
+app.get('/', function (req, res) { //processing a get request
+    res.sendFile(__dirname + '/client/index.html'); //issuing a file to a get request
 });
 
-app.use('/client', express.static(__dirname + '/client')); //установка используемых файлов
+app.use('/client', express.static(__dirname + '/client')); //installing used files
 
-serv.listen(2000); //начало прослушивание по порту 2000
+serv.listen(2000); //start listening on port 2000
 
 var io = require('socket.io')(serv, {});
 
-io.sockets.on('connection', function (socket) { //подключение сокетов
+io.sockets.on('connection', function (socket) { //connecting sockets
     console.log('socket connection');
 
     /*
-     * Приём данных с клиентской части приложения
+     * receiving data from the client side of the application
     socket.on('happy', function (data) {
         console.log(data.reason);
     });*/
 
     /*
-     * Отправка данных клиентской части приложения
+     * sending data to the client side of the application
     socket.emit('serverMsg', {
         msg: 'Hello'
     });

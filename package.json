@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-game",
+  "version": "0.0.0",
+  "description": "NodejsGame",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^1.4.5"
+  }
+}
